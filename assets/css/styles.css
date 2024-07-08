@@ -1,0 +1,84 @@
+html{
+    --lamp-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    --default-height: 3em;
+}
+*{
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+body{
+    font-size: 40px;
+    background-color: #ffe9bc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 1em;
+}
+
+.to-do-list-container{
+    min-height: 10em;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 2em;
+}
+.inputTask{
+    height: var(--default-height);
+    border: 0;
+    padding-left: 10px;
+    background-color: #eeeeee;
+    flex-basis: 300px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+.input-task:focus, input:focus{
+    outline: none;
+}
+.input-task-container{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.addTaskBtn{
+    flex-basis: 100px;
+    flex-grow: 1;
+    border: 0;
+    background-color: #82ffe6;
+    cursor: pointer;
+    height: var(--default-height);
+}
+.spec-shadow{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.taskList{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.task{
+    display: flex;
+    min-height: var(--default-height);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.5em;
+}
+.task p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.trash-icon{
+    margin-left: auto;
+    cursor: pointer;
+}
