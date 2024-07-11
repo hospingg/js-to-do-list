@@ -7,15 +7,10 @@ const addTaskBtn = document.querySelector('.addTaskBtn')
 
 
 const dataList = []
-
 function addTask(){
     if(inputEl.value){
         addData()
-        const taskEl = createTaskEl()
-        const taskContent = createTaskContent()
-        const trashIcon = createTrashIcon()
-        taskEl.append(taskContent, trashIcon)
-        taskList.append(taskEl)
+        updateTasks()
         clearInput()
     }
     else{
@@ -30,9 +25,9 @@ function createTaskEl(){
     li.classList.add('task')
     return li
 }
-function createTaskContent(){
+function createTaskContent(taskValue){
     const task = document.createElement('p')
-    task.textContent = inputEl.value
+    task.textContent = taskValue
     return task
 }
 function createTrashIcon(){
@@ -48,8 +43,19 @@ function deleteTask(e){
     const currectTask = e.target.closest('.task')
     const currectItem = currectTask.querySelector('p').textContent
     dataList.splice(dataList.findIndex(item => item === currectItem), 1)
-    currectTask.remove()
+    updateTasks()
+    // or currectTask.remove()
 }
 
+function updateTasks(){
+    taskList.innerHTML = ""
+    dataList.forEach(item =>{
+        const taskEl = createTaskEl()
+        const taskContent = createTaskContent(item)
+        const trashIcon = createTrashIcon()
+        taskEl.append(taskContent, trashIcon)
+        taskList.append(taskEl)
+    })
+}
 
 addTaskBtn.addEventListener('click', addTask)
