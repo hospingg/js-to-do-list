@@ -2,13 +2,15 @@
 
 
 const taskList = document.querySelector('.taskList')
-
 const inputEl = document.querySelector('.inputTask')
 const addTaskBtn = document.querySelector('.addTaskBtn')
 
 
+const dataList = []
+
 function addTask(){
     if(inputEl.value){
+        addData()
         const taskEl = createTaskEl()
         const taskContent = createTaskContent()
         const trashIcon = createTrashIcon()
@@ -20,7 +22,9 @@ function addTask(){
         alert('Будь ласка, введіть завдання')
     }
 }
-
+function addData(){
+    dataList.push(inputEl.value)
+}
 function createTaskEl(){
     const li = document.createElement('li')
     li.classList.add('task')
@@ -41,7 +45,11 @@ function clearInput(){
     inputEl.value = ''
 }
 function deleteTask(e){
-    e.target.closest('.task').remove()
+    const currectTask = e.target.closest('.task')
+    const currectItem = currectTask.querySelector('p').textContent
+    dataList.splice(dataList.findIndex(item => item === currectItem), 1)
+    currectTask.remove()
 }
+
 
 addTaskBtn.addEventListener('click', addTask)
